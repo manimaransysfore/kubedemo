@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo
+  labels:
+    app: my-app
+    tier: front-end
+spec:
+  containers:
+    - name: demo-container
+      image: nginx
+      mage: hostname/samples/app:latest
+    imagePullSecrets:
+      - name: acrimage
+#kubectl create secret docker-registry acrimage --docker-server=sysforedemo.azurecr.io --docker-username=sysforedemo --docker-password=rohmFyb4XgUW=zM4U+Ek6h4eUj1/Hpre --docker-email=manimaran.r@sysfore.com
+
+#      image: sysforedemo.azurecr.io/samples/app:latest
+#  imagePullSecrets:
+#    - name: acrimage

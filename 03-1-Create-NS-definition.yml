@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: qa #QA uppercase is not working because of DNS name conversion issues
+
+#kubectl get namespaces
+#kubectl get pods -n qa

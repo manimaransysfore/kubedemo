@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fileshare-deployment
+  labels:
+    app: fileshare-deployment
+spec:
+  replicas: 2
+  selector:
+      matchLabels:
+        app: fileshare-deployment
+  template:
+    metadata:
+      labels:
+        app: fileshare-deployment
+    spec:
+      containers:
+      - name: fileshare-deployment
+        image: nginx
+        volumeMounts:
+        - name: azurefileshare
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: azurefileshare
+        azureFile:
+          secretName: azure-secret
+          shareName: files-k8s
+          readOnly: false
